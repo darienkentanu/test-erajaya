@@ -12,6 +12,7 @@ test erajaya
 
 # Description
 This is submition of coding test of erajaya
+In this program i use MVC architecture because it's the most common achitecture used by programmer
 
 # How to use
 - Install Go and MySQL or (install docker and docker-compose)
