@@ -29,7 +29,7 @@ DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME,
 ```
 - run this project
 ```
-$ go run main.go or $ docker-compose up --build -d
+$ go run main.go or $ docker-compose up --build
 ```
 # Endpoints
 
