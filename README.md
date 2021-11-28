@@ -44,6 +44,13 @@ $ go run main.go or $ docker-compose up --build -d
 ```
 - example POST
 http://localhost:8000/products
+-JSON Input 
+{
+	"name": "pulsa 200000",
+	"description": "pulsa 200 rb",
+	"price": 200000,
+	"quantity": 10
+}
 ```
 
 ```
