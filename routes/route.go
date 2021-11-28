@@ -15,16 +15,12 @@ func New(db *gorm.DB) *echo.Echo {
 	//tambah product
 	e.POST("/products", pc.AddProduct)
 
-	// product terbaru
-	e.GET("/newestproducts", pc.GetNewestProduct)
-	// product termurah
-	e.GET("/productslowest", pc.GetProductLowestPrice)
-	// product termahal
-	e.GET("/productshighest", pc.GetProductHighestPrice)
-	// product a-z
-	e.GET("/productsasc", pc.GetProductASC)
-	// product z-a
-	e.GET("/productsdesc", pc.GetProductDESC)
+	// product terbaru = newest
+	// product termurah = lowest
+	// product termahal = highest
+	// product a-z = asc
+	// product z-a = desc
+	e.GET("/products", pc.GetProduct)
 
 	return e
 }

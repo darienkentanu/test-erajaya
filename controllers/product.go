@@ -37,72 +37,75 @@ func (pc *ProductController) AddProduct(c echo.Context) error {
 	})
 }
 
-func (pc *ProductController) GetNewestProduct(c echo.Context) error {
-	var products []models.Product
+func (pc *ProductController) GetProduct(c echo.Context) error {
+	sortBy := c.QueryParam("sortby")
+	switch sortBy {
+	case "newest":
+		var products []models.Product
 
-	products, err := pc.db.GetNewestProduct()
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
+		products, err := pc.db.GetNewestProduct()
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
+		}
+
+		return c.JSON(http.StatusOK, M{
+			"status": "success",
+			"data":   products,
+		})
+
+	case "lowest":
+		var products []models.Product
+
+		products, err := pc.db.GetProductLowestPrice()
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
+		}
+
+		return c.JSON(http.StatusOK, M{
+			"status": "success",
+			"data":   products,
+		})
+
+	case "highest":
+		var products []models.Product
+
+		products, err := pc.db.GetProductHighestPrice()
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
+		}
+
+		return c.JSON(http.StatusOK, M{
+			"status": "success",
+			"data":   products,
+		})
+
+	case "asc":
+		var products []models.Product
+
+		products, err := pc.db.GetProductASC()
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
+		}
+
+		return c.JSON(http.StatusOK, M{
+			"status": "success",
+			"data":   products,
+		})
+
+	case "desc":
+		var products []models.Product
+
+		products, err := pc.db.GetProductDESC()
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
+		}
+
+		return c.JSON(http.StatusOK, M{
+			"status": "success",
+			"data":   products,
+		})
+
+	default:
+		return echo.NewHTTPError(http.StatusNotFound, "Please input valid query paramater")
 	}
-
-	return c.JSON(http.StatusOK, M{
-		"status": "success",
-		"data":   products,
-	})
-}
-
-func (pc *ProductController) GetProductASC(c echo.Context) error {
-	var products []models.Product
-
-	products, err := pc.db.GetProductASC()
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
-	}
-
-	return c.JSON(http.StatusOK, M{
-		"status": "success",
-		"data":   products,
-	})
-}
-
-func (pc *ProductController) GetProductDESC(c echo.Context) error {
-	var products []models.Product
-
-	products, err := pc.db.GetProductDESC()
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
-	}
-
-	return c.JSON(http.StatusOK, M{
-		"status": "success",
-		"data":   products,
-	})
-}
-
-func (pc *ProductController) GetProductHighestPrice(c echo.Context) error {
-	var products []models.Product
-
-	products, err := pc.db.GetProductHighestPrice()
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
-	}
-
-	return c.JSON(http.StatusOK, M{
-		"status": "success",
-		"data":   products,
-	})
-}
-
-func (pc *ProductController) GetProductLowestPrice(c echo.Context) error {
-	var products []models.Product
-
-	products, err := pc.db.GetProductLowestPrice()
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Internal server error")
-	}
-
-	return c.JSON(http.StatusOK, M{
-		"status": "success",
-		"data":   products,
-	})
 }

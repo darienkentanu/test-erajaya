@@ -1,8 +1,9 @@
 # Test - Erajaya
-test erajaya
+Coding Test Erajaya
 
-[![Go.Dev reference](https://img.shields.io/badge/gorm-reference-blue?logo=go&logoColor=blue)](https://pkg.go.dev/gorm.io/gorm?tab=doc)
+Framework used in this project: <br>
 [![Go.Dev reference](https://img.shields.io/badge/echo-reference-blue?logo=go&logoColor=blue)](https://github.com/labstack/echo)
+[![Go.Dev reference](https://img.shields.io/badge/gorm-reference-blue?logo=go&logoColor=blue)](https://pkg.go.dev/gorm.io/gorm?tab=doc)
 
 # Table of Content
 - [Description](#description)
@@ -12,7 +13,9 @@ test erajaya
 
 # Description
 This is submition of coding test of erajaya
-In this program i use MVC architecture because it's the most common achitecture used by programmer
+```
+In this project i use MVC architecture because it's the most common achitecture used by programmer
+```
 
 # How to use
 - Install Go and MySQL or (install docker and docker-compose)
@@ -24,23 +27,29 @@ $ git clone https://github.com/darienkentanu/test-erajaya
 ```
 DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME,
 ```
-$ go run main.go or $ docker-compose up --build -d
-
+- run this project
 ```
-
-
+$ go run main.go or $ docker-compose up --build -d
+```
 # Endpoints
 
 | Method | Endpoint | Description|
 |:-----|:--------|:----------| 
 | POST  | /products | add a product
 |:-----|:--------|:----------| 
-| GET  | /newestproducts | get product from newest
-| GET | /productslowest | get product from lowest price
-| GET | /productshighest | get product from highest price
-| GET | /productsasc | get products order by A-Z
-| GET | /productsdesc | get products order by Z-A
-|---|---|---|---|---|
+| GET  | /products{sortby} | get product sortby: newest, lowest, highest, asc, desc
+|:-----|:--------|:----------| 
+
+
+```
+- example POST
+http://localhost:8000/products
+```
+
+```
+- example GET
+http://localhost:8000/products?sortby=newest
+```
 
 <br>
 
